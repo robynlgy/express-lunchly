@@ -16,6 +16,40 @@ class Customer {
     this.notes = notes;
   }
 
+  /** methods for getting/setting id (validate id not less than zero) */
+
+  set id(val) {
+    if (val <= 0) {
+      throw new Error();
+    }
+    this._id = val;
+  }
+
+  get id() {
+    return this._id;
+  }
+
+  /** methods for getting/setting notes (keep as empty string, not NULL) */
+
+
+  set notes(val) {
+    this._notes = val || "";
+  }
+
+  get notes() {
+    return this._notes;
+  }
+
+  /** methods for getting/setting phone #. */
+
+  set phone(val) {
+    this._phone = val || null;
+  }
+
+  get phone() {
+    return this._phone;
+  }
+
   /** find all customers. */
 
   static async all() {
@@ -133,9 +167,10 @@ class Customer {
 
   /** return full name of customer. */
 
-  getFullName() {
+  get fullName() {
     return `${this.firstName} ${this.lastName}`;
   }
+
 
 }
 
